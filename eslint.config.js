@@ -364,6 +364,21 @@ module.exports = [
     }
   },
   {
+    files: ['build/**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+        ...globals.es2024
+      }
+    },
+    rules: {
+      'no-console': 'off',
+      'no-restricted-imports': ['off']
+    }
+  },
+  {
     files: ['.github/bin/*.mjs'],
     languageOptions: {
       ecmaVersion: 'latest',
@@ -383,13 +398,13 @@ module.exports = [
       '**/node_modules/*',
       '**/tmp/*',
       'patches/*',
-      'build/tasks/aria-supported.js',
       'doc/api/*',
       'doc/examples/jest_react/*.js',
       'lib/core/imports/polyfills.js',
       'lib/core/utils/uuid.js',
       'axe.js',
-      'axe.min.js'
+      'axe.min.js',
+      'test/integration/full/patch/patch.mjs'
     ]
   }
 ];
